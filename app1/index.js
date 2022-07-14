@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
 const sequalize = require("sequelize");
-const db = new sequalize(process.env.POSTGRES_URL);
+const db = new sequalize("postgres", "postgres", "postgres", {
+  host: "postgress",
+  dialect: "postgres",
+});
 const kafka = require("kafka-node");
-
 app.use(express.json());
 
 const init = async () => {
